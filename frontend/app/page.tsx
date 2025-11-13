@@ -189,7 +189,7 @@ export default function Home() {
       <footer className="border-t border-red-800 dark:border-red-800 light:border-blue-300 bg-black/80 dark:bg-black/80 light:bg-white/80 backdrop-blur-md mt-12">
         <div className="container mx-auto px-4 py-6">
           <div className="text-center text-sm text-gray-400 dark:text-gray-400 light:text-gray-600">
-            <p>© 2024 FitFindr. Powered by Google Places API & Natural Language Processing</p>
+            <p>© 2025 FitFindr. Powered by Google Places API & Natural Language Processing</p>
           </div>
         </div>
       </footer>
