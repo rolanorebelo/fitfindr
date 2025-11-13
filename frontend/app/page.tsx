@@ -6,7 +6,6 @@ import { Dumbbell, MapPin, Sparkles } from 'lucide-react'
 import PreferenceForm from '@/components/PreferenceForm'
 import GymResults from '@/components/GymResults'
 import { Gym } from '@/types'
-import { ThemeToggle } from '@/components/ThemeToggle'
 
 export default function Home() {
   const [gyms, setGyms] = useState<Gym[]>([])
@@ -61,7 +60,6 @@ export default function Home() {
                 <Sparkles className="h-4 w-4 text-red-500" />
                 <span>AI-Powered Recommendations</span>
               </motion.div>
-              <ThemeToggle />
             </div>
           </motion.div>
         </div>
