@@ -4,10 +4,10 @@ from pydantic import BaseModel, Field
 from typing import List, Dict, Optional
 import requests
 import googlemaps
-from textblob import TextBlob
 import os
 from dotenv import load_dotenv
 from functools import lru_cache
+import re
 
 load_dotenv()
 
@@ -116,22 +116,28 @@ def get_gym_details(place_id: str):
     except requests.RequestException as e:
         raise HTTPException(status_code=500, detail=f"Error fetching gym details: {str(e)}")
 
+def extract_words(text: str) -> List[str]:
+    """Extract words from text using simple regex (replacement for TextBlob.words)"""
+    # Convert to lowercase and split on whitespace and punctuation
+    words = re.findall(r'\b\w+\b', text.lower())
+    return words
+
 def calculate_preference_rating(review_text: str, preferences: dict, custom_filters: List[CustomFilter]):
     """Calculate tailored rating based on preferences and review text"""
-    blob = TextBlob(review_text.lower())
+    words = extract_words(review_text)
     score = 0
-    
+
     # Check predefined preferences
     for pref, importance in preferences.items():
         for keyword in PREFERENCE_KEYWORDS.get(pref, []):
-            if keyword in blob.words:
+            if keyword in words:
                 score += importance
-    
+
     # Check custom filters
     for filter_item in custom_filters:
-        if filter_item.keyword.lower() in blob.words:
+        if filter_item.keyword.lower() in words:
             score += filter_item.importance
-    
+
     return score
 
 # API endpoints
