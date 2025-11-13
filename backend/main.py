@@ -16,7 +16,11 @@ app = FastAPI(title="FitFindr API", version="1.0.0")
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:3001"],  # Next.js default ports
+    allow_origins=[
+        "http://localhost:3000", 
+        "http://localhost:3001",
+        "https://fitfindr-emq0nofey-rolanorebelos-projects.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
