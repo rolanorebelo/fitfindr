@@ -8,9 +8,11 @@ A modern, full-stack gym recommendation application that uses Natural Language P
 - **NLP-Powered Analysis**: TextBlob sentiment analysis on real user reviews
 - **Interactive Map**: Visualize gym locations with Leaflet maps
 - **Beautiful UI**: Modern, responsive design with Tailwind CSS and Framer Motion
+- **Dark/Light Theme Toggle**: Beautiful theme switching with localStorage persistence
 - **Analytics Dashboard**: Charts and visualizations of gym ratings
 - **Custom Filters**: Add your own keywords and preferences
 - **Export Data**: Download recommendations as CSV
+- **Mobile-First**: Responsive design that works on all devices
 
 ## 🛠️ Tech Stack
 
@@ -221,23 +223,60 @@ fitfindr/
 
 ## 🚢 Deployment
 
-### Backend Deployment (e.g., Railway, Render)
+### Frontend (Vercel - Recommended)
 
-1. Push code to GitHub
-2. Connect repository to hosting platform
-3. Set environment variables
-4. Deploy!
+1. **Create Vercel Account**
+   - Go to [vercel.com](https://vercel.com)
+   - Sign up with GitHub
 
-### Frontend Deployment (Vercel)
+2. **Import Project**
+   - Click "New Project"
+   - Import your GitHub repository
+   - Vercel will auto-detect Next.js
 
-```bash
-# Install Vercel CLI
-npm i -g vercel
+3. **Configure Environment**
+   ```
+   NEXT_PUBLIC_API_URL=https://your-backend-url.onrender.com
+   ```
 
-# Deploy
-cd frontend
-vercel
-```
+4. **Deploy**
+   - Push to main branch triggers auto-deployment
+   - Get HTTPS URL instantly
+
+### Backend (Render - Free Tier Available)
+
+1. **Create Render Account**
+   - Go to [render.com](https://render.com)
+   - Connect GitHub repository
+
+2. **Create Web Service**
+   - **Runtime**: Python 3
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `python main.py`
+
+3. **Environment Variables**
+   ```
+   GOOGLE_MAPS_API_KEY=your_api_key_here
+   ```
+
+4. **Deploy**
+   - Free tier includes 750 hours/month
+   - Automatic SSL certificates
+
+### Alternative Backend Options
+
+- **Railway**: `railway up` for instant deployment
+- **Heroku**: Traditional PaaS with free tier
+- **Fly.io**: Global deployment with Docker
+
+### Production Checklist
+
+- ✅ Set up environment variables
+- ✅ Configure CORS for production domain
+- ✅ Enable Google Places API restrictions
+- ✅ Test all endpoints
+- ✅ Verify theme switching works
+- ✅ Check mobile responsiveness
 
 ## 🤝 Contributing
 
